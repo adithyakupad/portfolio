@@ -11,7 +11,7 @@ export const siteData = {
     "I'm currently a student at Northview High School (Class of 2026) interested in medicine, biomedical research, and computational systems. Much of my work sits at the intersection of research and implementation. I've worked on coronary artery disease analysis in the Cardiovascular Fluid Mechanics Lab at Georgia Tech, studied ALS-associated mutations through structural bioinformatics, and helped launch community initiatives like Medipolitan and VT Seva. I'm especially interested in how we detect disease earlier, understand biological variation more deeply, and build systems that actually deliver care in the real world.",
   email: "adithya.k.upad@gmail.com",
   github: "https://github.com/adithyakupad",
-  linkedin: "https://linkedin.com/in/adithyaupadhyayula",
+  linkedin: "https://www.linkedin.com/in/adithya-upadhyayula-405701336/",
   resume: "/resume.pdf",
   profileImage: "/images/profile.jpg",
 };
