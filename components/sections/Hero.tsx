@@ -42,7 +42,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.div variants={item} className="flex flex-wrap gap-3">
-              <a
+              
                 href={siteData.resume}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -51,7 +51,7 @@ export default function Hero() {
                 <FileText size={14} />
                 View Resume
               </a>
-              <a
+              
                 href="#research"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-light border border-[var(--glass-border)] text-[var(--text-1)] hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.16)] transition-all"
               >
@@ -67,39 +67,19 @@ export default function Hero() {
             transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="hidden lg:block"
           >
-            <div className="relative">
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden img-placeholder border border-[var(--glass-border)]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={siteData.profileImage}
-                  alt="Adithya Upadhyayula"
-                  className="absolute inset-0 w-full h-full object-cover"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="font-display text-lg font-medium text-[var(--text-1)]">Adithya Upadhyayula</p>
-                  <p className="text-xs font-mono text-[var(--text-2)] mt-0.5">Northview HS · Class of 2026</p>
-                </div>
+            <div className="relative aspect-[3/4] rounded-3xl overflow-hidden img-placeholder border border-[var(--glass-border)]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={siteData.profileImage}
+                alt="Adithya Upadhyayula"
+                className="absolute inset-0 w-full h-full object-cover"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <p className="font-display text-lg font-medium text-[var(--text-1)]">Adithya Upadhyayula</p>
+                <p className="text-xs font-mono text-[var(--text-2)] mt-0.5">Northview HS · Class of 2026</p>
               </div>
-
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-3 -right-3 glass rounded-2xl px-3 py-2"
-              >
-                <p className="font-mono text-[10px] text-[var(--text-3)] mb-0.5">Lab</p>
-                <p className="text-sm font-medium text-[var(--text-1)]">Georgia Tech</p>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, 4, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-3 -left-3 glass rounded-2xl px-3 py-2"
-              >
-                <p className="font-mono text-[10px] text-[var(--text-3)] mb-0.5">Papers reviewed</p>
-                <p className="text-sm font-medium text-[var(--text-1)]">120+</p>
-              </motion.div>
             </div>
           </motion.div>
 
