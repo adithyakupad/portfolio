@@ -19,48 +19,35 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none opacity-[0.025]"
         style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.15) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.15) 1px,transparent 1px)", backgroundSize: "80px 80px" }}
       />
-
       <div className="relative max-w-6xl mx-auto px-6 w-full pt-36 pb-28">
         <div className="grid lg:grid-cols-[1fr_360px] gap-16 items-center">
-
           <motion.div variants={stagger} initial="hidden" animate="show">
             <motion.span variants={item} className="eyebrow">
               Student Researcher · Builder · Community Founder
             </motion.span>
-
             <motion.h1 variants={item} className="font-display text-5xl sm:text-6xl lg:text-7xl font-medium text-[var(--text-1)] leading-[1.08] mb-5">
               Hi, I&apos;m<br />
               <span className="italic font-normal text-[var(--text-2)]">Adithya.</span>
             </motion.h1>
-
             <motion.p variants={item} className="text-[var(--text-2)] text-base font-light max-w-lg leading-relaxed mb-4">
               {siteData.heroText}
             </motion.p>
-
             <motion.p variants={item} className="text-[var(--text-2)] text-base font-light max-w-lg leading-relaxed mb-10">
               {siteData.heroVision}
             </motion.p>
-
             <motion.div variants={item} className="flex flex-wrap gap-3">
-              
-                href={siteData.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--red)] text-white text-sm font-medium hover:bg-[#a01528] transition-all hover:shadow-[0_4px_20px_rgba(191,26,47,0.4)]"
-              >
+              <a href={siteData.resume} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--red)] text-white text-sm font-medium hover:bg-[#a01528] transition-all hover:shadow-[0_4px_20px_rgba(191,26,47,0.4)]">
                 <FileText size={14} />
                 View Resume
               </a>
-              
-                href="#research"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-light border border-[var(--glass-border)] text-[var(--text-1)] hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.16)] transition-all"
-              >
+              <a href="#research"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-light border border-[var(--glass-border)] text-[var(--text-1)] hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(255,255,255,0.16)] transition-all">
                 Explore Work
                 <ChevronRight size={14} className="opacity-60" />
               </a>
             </motion.div>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -68,7 +55,6 @@ export default function Hero() {
             className="hidden lg:block"
           >
             <div className="relative aspect-[3/4] rounded-3xl overflow-hidden img-placeholder border border-[var(--glass-border)]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={siteData.profileImage}
                 alt="Adithya Upadhyayula"
@@ -82,10 +68,8 @@ export default function Hero() {
               </div>
             </div>
           </motion.div>
-
         </div>
       </div>
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
