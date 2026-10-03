@@ -1,17 +1,31 @@
-# Portfolio
+# Adithya Upadhyayula — portfolio
 
-A minimal Next.js App Router starter for rebuilding Adithya Upadhyayula's portfolio.
+A personal site about work at the interface of biology and machines.
 
-## Local development
+## Stack
 
-Requires Node.js and npm. Install dependencies with `npm ci`, then run `npm run dev`. Open http://localhost:3000.
+Next.js App Router, TypeScript, Tailwind CSS 4, and bespoke CSS/SVG visuals. The site does not require a motion or graphics library.
 
-Run `npm run lint` and `npm run build` before publishing changes.
+## Develop
 
-## Previous version
+```bash
+npm ci
+npm run dev
+```
 
-The complete site before the rebuild is preserved on the `archive/pre-redesign` branch, including its content, profile image, and résumé. This branch should remain available while the new portfolio is developed.
+Open http://localhost:3000. Before shipping, run `npm run lint` and `npm run build`.
+
+## Content
+
+- `lib/projects.ts` is the central source for selected projects and their optional case-study sections. Missing results, evidence, and links are omitted until real material is available.
+- `lib/site.ts` contains identity, social links, and About-page recognition.
+- `components/Visuals.tsx` contains original illustrative artwork. The research visual is explicitly marked as conceptual, not patient data.
+- `public/portrait.jpg` is the portrait preserved from the previous site.
+- `app/projects/[slug]/page.tsx` renders the project case studies.
+- `app/research/page.tsx` holds the research narrative.
+
+The previous version, including its résumé, remains on `archive/pre-redesign`.
 
 ## Deployment
 
-The repository's GitHub About section lists a Vercel URL. This codebase does not contain a Vercel project link, domain settings, or a deployment workflow; verify deployment settings in the hosting account before publishing.
+The GitHub repository lists a Vercel URL, but no deployment connection or custom domain is configured in this codebase. Verify hosting settings in the relevant account before publishing.
