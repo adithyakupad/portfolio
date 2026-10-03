@@ -36,7 +36,7 @@ export default async function ProjectPage({ params }: Props) {
         <div className="detail-hero__atmosphere detail-hero__atmosphere--near" data-parallax="" data-parallax-speed="-80" aria-hidden="true" />
         <div className="frame">
           <div className="detail-hero__top micro">
-            <Link href="/projects">← ALL PROJECTS</Link>
+            <Link href="/#projects">← ALL PROJECTS</Link>
             <span>{project.number} / {project.category}</span>
           </div>
           <div className="detail-hero__headline">

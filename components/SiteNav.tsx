@@ -7,14 +7,15 @@ import { BrandMark } from "@/components/BrandMark";
 
 const links = [
   { label: "About", href: "/#about" },
-  { label: "Research", href: "/research" },
-  { label: "Projects", href: "/projects" },
+  { label: "Research", href: "/#research" },
+  { label: "Projects", href: "/#projects" },
 ] as const;
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -28,6 +29,14 @@ export function SiteNav() {
           const box = section.getBoundingClientRect();
           if (box.top <= 76) current = section.dataset.navTheme === "light" ? "light" : "dark";
         }
+        if (pathname === "/") {
+          let active = "";
+          for (const id of ["about", "research", "projects"]) {
+            const target = document.getElementById(id);
+            if (target && target.getBoundingClientRect().top <= window.innerHeight * .43) active = id;
+          }
+          setActiveSection(active);
+        } else setActiveSection("");
         setTheme(current);
         setScrolled(window.scrollY > 28);
       });
@@ -48,7 +57,7 @@ export function SiteNav() {
   return <header className="site-header" data-theme={theme} data-scrolled={scrolled}>
     <nav className="site-nav liquid-surface" aria-label="Primary navigation" onPointerMove={(event) => { const rect = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - rect.left}px`); event.currentTarget.style.setProperty("--pointer-y", `${event.clientY - rect.top}px`); }}>
       <Link className="site-nav__mark" href="/" onClick={() => setOpen(false)} aria-label="Adithya Upadhyayula, home"><BrandMark /></Link>
-      <div className="site-nav__links">{links.map((link) => <Link key={link.label} href={link.href} aria-current={pathname === link.href ? "page" : undefined}>{link.label}</Link>)}</div>
+      <div className="site-nav__links">{links.map((link) => <Link key={link.label} href={link.href} aria-current={pathname === "/" && activeSection === link.href.slice(2) ? "location" : undefined}>{link.label}</Link>)}</div>
       <a className="site-nav__contact" href="mailto:aupadhyayula6@gatech.edu">CONTACT ↗</a>
       <button className="site-nav__toggle" type="button" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen((value) => !value)}>{open ? "Close" : "Menu"}<span className="site-nav__toggle-icon" aria-hidden="true">{open ? "×" : "+"}</span></button>
     </nav>

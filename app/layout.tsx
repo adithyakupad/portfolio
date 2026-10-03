@@ -3,6 +3,7 @@ import { Instrument_Serif, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { SiteNav } from "@/components/SiteNav";
 import { ScrollReveals } from "@/components/ScrollReveals";
+import { FrostedLight } from "@/components/FrostedLight";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a className="skip-link" href="#main-content">Skip to content</a>
         <SiteNav />
         <ScrollReveals />
+        <FrostedLight />
         <div id="main-content" tabIndex={-1}>{children}</div>
         <Footer />
       </body>
