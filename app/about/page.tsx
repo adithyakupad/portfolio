@@ -18,11 +18,9 @@ export default function AboutPage() {
           <div className="about-page__hero-grid">
             <div>
               <span className="micro">ADITHYA KARTHIK UPADHYAYULA</span>
-              <h1>Curious about<br />the space <em>between.</em></h1>
+              <h1>hey, i’m<br />adithya.</h1>
               <p>
-                I study biomedical engineering at Georgia Tech. My work and
-                interests move between medical robotics, biological computing,
-                computational medicine, and the interfaces that connect them.
+                I study biomedical engineering at Georgia Tech. Right now, I’m building real-time EMG processing for prosthetic control with GT Medical Robotics and researching coronary plaque radiomics in the Cardiovascular Fluid Mechanics Laboratory.
               </p>
             </div>
             <div className="about-page__portrait">

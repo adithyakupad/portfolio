@@ -7,7 +7,7 @@ export function Footer() {
       <div className="frame site-footer__top">
         <div>
           <p className="micro">CONTACT / ATLANTA</p>
-          <h2>Have a question<br />worth building around?</h2>
+          <h2>Get in<br />touch.</h2>
           <a className="site-footer__email" href={`mailto:${site.email}`}>
             {site.email}<span aria-hidden="true">↗</span>
           </a>

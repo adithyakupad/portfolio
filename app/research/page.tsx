@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 const researchSections = [
   {
     label: "01 / RESEARCH QUESTION",
-    heading: "What can plaque morphology reveal?",
+    heading: "Can imaging features distinguish plaque phenotypes?",
     body: "This work studies radiomic phenotypes of coronary atherosclerotic plaques and asks how patterns found by unsupervised analysis relate to functional disease severity and clinical outcomes.",
   },
   {
     label: "02 / CLINICAL CONTEXT",
-    heading: "An image holds more than a measurement.",
+    heading: "Clinical reference points.",
     body: "The project examines plaque structure in the context of coronary disease. Fractional flow reserve (FFR) and clinical outcomes provide reference points for evaluating whether computational phenotypes carry useful signal.",
   },
   {
@@ -41,12 +41,12 @@ export default function ResearchPage() {
       <section className="detail-hero research-page__hero" data-nav-theme="dark">
         <div className="frame">
           <div className="detail-hero__top micro">
-            <Link href="/research">← HOME / RESEARCH</Link>
+            <Link href="/">← HOME / RESEARCH</Link>
             <span>GEORGIA INSTITUTE OF TECHNOLOGY</span>
           </div>
           <div className="detail-hero__headline">
             <span className="micro">CARDIOVASCULAR FLUID MECHANICS LABORATORY</span>
-            <h1>Research at<br />the edge of <em>evidence.</em></h1>
+            <h1>Coronary plaque<br /><em>radiomics.</em></h1>
             <p>Radiomic phenotyping of coronary atherosclerotic plaques.</p>
           </div>
           <div className="detail-hero__bottom micro">
