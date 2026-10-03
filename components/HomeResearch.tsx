@@ -1,5 +1,6 @@
 import { InteractiveMedia } from "@/components/InteractiveMedia";
 import { ResearchVisual } from "@/components/Visuals";
+import { AnimatedDetails } from "@/components/AnimatedDetails";
 
 export function HomeResearch() {
   return (
@@ -19,14 +20,11 @@ export function HomeResearch() {
           <div className="home-research__copy" data-frost-light="" data-parallax="" data-parallax-speed="-27" data-reveal="section">
             <span className="micro">THE WORK / IN BRIEF</span>
             <p>Radiomic phenotyping of coronary atherosclerotic plaques, benchmarking unsupervised clustering pipelines against FFR and clinical outcomes.</p>
-            <details className="home-research__method">
-              <summary><span>Method &amp; scope</span><span aria-hidden="true">+</span></summary>
-              <div>
+            <AnimatedDetails className="home-research__method" summary={<><span>Method &amp; scope</span><span aria-hidden="true">+</span></>}>
                 <p>My current work spans medical imaging, radiomic feature extraction with PyRadiomics, and computational analysis in Python.</p>
                 <p className="micro">IMAGING → FEATURES → CLUSTERING → FFR / OUTCOMES</p>
                 <p className="home-research__caveat">This is the research workflow. Results, posters, and publications can be added when available.</p>
-              </div>
-            </details>
+            </AnimatedDetails>
           </div>
         </div>
       </div>

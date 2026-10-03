@@ -1441,3 +1441,49 @@ html[data-motion-visibility="hidden"] .visual *, html[data-motion-visibility="hi
 @media (prefers-reduced-motion: reduce) {
   [data-frost-light]::after { transition: none; }
 }
+
+/* Disclosure content retains native details semantics while its height is animated. */
+.animated-details__content { transform-origin: top; }
+[data-disclosure-state] > .animated-details__content { will-change: height, opacity, transform; }
+.home-about__background summary > span:first-child,
+.home-research__method summary > span:first-child { transition: transform .35s cubic-bezier(.22,1,.36,1); }
+.home-about__background[open]:not([data-disclosure-state="closing"]) summary > span:first-child,
+.home-research__method[open]:not([data-disclosure-state="closing"]) summary > span:first-child { transform: translateX(.25rem); }
+.home-about__background[open][data-disclosure-state="closing"] summary > .micro span,
+.home-research__method[open][data-disclosure-state="closing"] summary > span:last-child { transform: rotate(0); }
+.home-about__background summary:focus-visible,
+.home-research__method summary:focus-visible { outline: 2px solid #315c70; outline-offset: 5px; border-radius: .2rem; }
+
+/* A selected project expands from its position in the corridor before the case study appears. */
+.case-transition {
+  position: fixed;
+  z-index: 1000;
+  overflow: hidden;
+  pointer-events: auto;
+  background: #0b1825;
+  border: 1px solid rgba(236,246,245,.4);
+  box-shadow: 0 35px 100px rgba(0,5,13,.28);
+}
+.case-transition__tile,
+.case-transition__tile:hover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: inherit;
+  transform: none;
+  transition: none;
+  box-shadow: none;
+  pointer-events: none;
+  color: #f3f6f4;
+}
+.case-transition__tile .corridor-card__copy p { color: #e0e9e6; }
+.case-transition__tile .visual svg { transition: none; }
+.case-transition__tile .corridor-card__copy { max-width: min(72%,680px); }
+@media (max-width: 760px) {
+  .case-transition__tile .corridor-card__copy { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-about__background summary > span:first-child,
+  .home-research__method summary > span:first-child { transition: none; }
+}

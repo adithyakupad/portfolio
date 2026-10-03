@@ -3,6 +3,7 @@ import Image from "next/image";
 import { WaveField } from "@/components/WaveField";
 import { HomeResearch } from "@/components/HomeResearch";
 import { ProjectCorridor } from "@/components/ProjectCorridor";
+import { AnimatedDetails } from "@/components/AnimatedDetails";
 import { honors, site } from "@/lib/site";
 
 export default function Home() {
@@ -45,9 +46,7 @@ export default function Home() {
             <h2 id="about-heading" data-parallax="" data-parallax-speed="42">Right now<span>.</span></h2>
             <p data-parallax="" data-parallax-speed="-32">I study biomedical engineering at Georgia Tech. Outside class, I work on coronary plaque radiomics and build real-time EMG processing for prosthetic control.</p>
           </div>
-          <details className="home-about__background" data-frost-light="" data-reveal="row">
-            <summary><span>Background &amp; recognition</span><span className="micro">OPEN NOTES <span aria-hidden="true">+</span></span></summary>
-            <div className="home-about__background-content">
+          <AnimatedDetails className="home-about__background" data-frost-light="" data-reveal="row" contentClassName="home-about__background-content" summary={<><span>Background &amp; recognition</span><span className="micro">OPEN NOTES <span aria-hidden="true">+</span></span></>}>
               <div>
                 <span className="micro">EDUCATION</span>
                 <p>{site.school}<br />{site.degree} · {site.years}</p>
@@ -58,8 +57,7 @@ export default function Home() {
                 <span className="micro">SELECTED RECOGNITION</span>
                 <ul>{honors.map((honor) => <li key={honor}>{honor}</li>)}</ul>
               </div>
-            </div>
-          </details>
+          </AnimatedDetails>
         </div>
       </section>
       <HomeResearch />

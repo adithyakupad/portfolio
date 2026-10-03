@@ -31,7 +31,7 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <main className="detail-page">
-      <section className="detail-hero" data-nav-theme="dark">
+      <section className="detail-hero" data-project={project.slug} data-nav-theme="dark">
         <div className="detail-hero__atmosphere" data-parallax="" data-parallax-speed="130" aria-hidden="true" />
         <div className="detail-hero__atmosphere detail-hero__atmosphere--near" data-parallax="" data-parallax-speed="-80" aria-hidden="true" />
         <div className="frame">
@@ -40,7 +40,7 @@ export default async function ProjectPage({ params }: Props) {
             <span>{project.number} / {project.category}</span>
           </div>
           <div className="detail-hero__headline">
-            <h1 data-parallax="" data-parallax-speed="-45">{project.title}<span className="red-period">.</span></h1>
+            <h1 tabIndex={-1} data-parallax="" data-parallax-speed="-45">{project.title}<span className="red-period">.</span></h1>
             <p data-parallax="" data-parallax-speed="24">{project.thesis}</p>
           </div>
           <div className="detail-hero__bottom micro">

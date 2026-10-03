@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState, type FocusEvent } from "react";
 import { ProjectVisual } from "@/components/Visuals";
+import { ProjectTransitionLink } from "@/components/ProjectTransitionLink";
 import { projects } from "@/lib/projects";
 
 const rays = Array.from({ length: 54 }, (_, index) => {
@@ -132,6 +132,7 @@ export function ProjectCorridor() {
   };
 
   const focusCard = (event: FocusEvent<HTMLDivElement>) => {
+    if (!(event.target as HTMLElement).matches(":focus-visible")) return;
     const card = (event.target as HTMLElement).closest<HTMLElement>(".corridor-card");
     if (card) goTo(Number(card.dataset.index));
   };
@@ -155,13 +156,13 @@ export function ProjectCorridor() {
           <div className="corridor-track" ref={trackRef} onFocusCapture={focusCard}>
             {projects.map((project, index) => (
               <article className={`corridor-card corridor-card--${project.slug}`} data-index={index} key={project.slug}>
-                <Link href={`/case-studies/${project.slug}`} className="corridor-card__surface" aria-label={`${project.title}: ${project.description} Open case study`}>
+                <ProjectTransitionLink href={`/case-studies/${project.slug}`} slug={project.slug} className="corridor-card__surface" ariaLabel={`${project.title}: ${project.description} Open case study`}>
                   <div className="corridor-card__visual"><ProjectVisual kind={project.visual} idPrefix={`corridor-${project.slug}`} /></div>
                   <div className="corridor-card__shade" />
                   <div className="corridor-card__top micro"><span>[{project.number}] / {project.category}</span><span>{project.status}</span></div>
                   <div className="corridor-card__copy" data-frost-light=""><h3>{project.title}</h3><p>{project.description}</p></div>
                   <span className="corridor-card__action micro">OPEN CASE STUDY <span aria-hidden="true">↗</span></span>
-                </Link>
+                </ProjectTransitionLink>
               </article>
             ))}
           </div>
