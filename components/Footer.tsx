@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site, socialLinks } from "@/lib/site";
+import { BrandMark } from "@/components/BrandMark";
 
 export function Footer() {
   return (
@@ -21,7 +22,7 @@ export function Footer() {
         </div>
       </div>
       <div className="frame site-footer__bottom">
-        <Link href="/" aria-label="Back to homepage">AU<span>.</span></Link>
+        <Link href="/" aria-label="Back to homepage"><BrandMark /></Link>
         <span>Adithya Upadhyayula · Atlanta, GA</span>
         <span>2026</span>
       </div>

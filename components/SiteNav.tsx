@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { BrandMark } from "@/components/BrandMark";
 
 const links = [
   { label: "About", href: "/#about" },
@@ -46,7 +47,7 @@ export function SiteNav() {
 
   return <header className="site-header" data-theme={theme} data-scrolled={scrolled}>
     <nav className="site-nav liquid-surface" aria-label="Primary navigation" onPointerMove={(event) => { const rect = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - rect.left}px`); event.currentTarget.style.setProperty("--pointer-y", `${event.clientY - rect.top}px`); }}>
-      <Link className="site-nav__mark" href="/" onClick={() => setOpen(false)} aria-label="Adithya Upadhyayula, home">AU<span className="site-nav__mark-dot">.</span></Link>
+      <Link className="site-nav__mark" href="/" onClick={() => setOpen(false)} aria-label="Adithya Upadhyayula, home"><BrandMark /></Link>
       <div className="site-nav__links">{links.map((link) => <Link key={link.label} href={link.href} aria-current={pathname === link.href ? "page" : undefined}>{link.label}</Link>)}</div>
       <a className="site-nav__contact" href="mailto:aupadhyayula6@gatech.edu">CONTACT ↗</a>
       <button className="site-nav__toggle" type="button" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen((value) => !value)}>{open ? "Close" : "Menu"}<span className="site-nav__toggle-icon" aria-hidden="true">{open ? "×" : "+"}</span></button>
