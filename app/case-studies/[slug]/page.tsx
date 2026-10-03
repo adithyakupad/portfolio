@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DetailSection } from "@/components/DetailSection";
 import { getProject, projects } from "@/lib/projects";
+import { InteractiveMedia } from "@/components/InteractiveMedia";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -48,11 +49,11 @@ export default async function ProjectPage({ params }: Props) {
       </section>
 
       <section className="detail-media frame" data-nav-theme="light" aria-label={`Conceptual visual for ${project.title}`}>
-        <ProjectMedia project={project} idPrefix={`detail-${project.slug}`} />
+        <InteractiveMedia label={`${project.title} visual`}><ProjectMedia project={project} idPrefix={`detail-${project.slug}`} /></InteractiveMedia>
         <p className="micro">ILLUSTRATIVE SYSTEM VISUAL · PROJECT MEDIA CAN BE ADDED HERE</p>
       </section>
 
-      <div className="frame detail-overview">
+      <div className="frame detail-overview" data-reveal="section">
         <div className="micro">OVERVIEW / {project.number}</div>
         <div>
           <p className="detail-overview__lead">{project.description}</p>
@@ -68,7 +69,7 @@ export default async function ProjectPage({ params }: Props) {
           {project.sections.map((section) => <DetailSection key={section.label} {...section} />)}
         </div>
       ) : (
-        <div className="frame detail-pending">
+        <div className="frame detail-pending" data-reveal="section">
           <span className="micro">THE CASE STUDY</span>
           <p>Technical details will be added when they are ready to share.</p>
         </div>
@@ -81,7 +82,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       )}
 
-      <div className="frame detail-next">
+      <div className="frame detail-next" data-reveal="section">
         <span className="micro">NEXT PROJECT</span>
         <Link href={`/case-studies/${nextProject.slug}`}>{nextProject.title}<span aria-hidden="true">↗</span></Link>
       </div>

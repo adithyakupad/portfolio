@@ -23,7 +23,7 @@ export default function Home() {
         <WaveField />
         <div className="frame home-focus__inner">
           <div className="section-label micro"><span>[01] / INTERESTS</span><span>BIOMEDICAL ENGINEERING / ATLANTA</span></div>
-          <div className="home-focus__content">
+          <div className="home-focus__content" data-reveal="headline">
             <p className="micro">I&apos;M INTERESTED IN</p>
             <h2 id="focus-heading"><span>Medical robotics.</span><span>Biological computing.</span></h2>
           </div>
@@ -34,25 +34,25 @@ export default function Home() {
       <section className="home-about" id="about" data-nav-theme="light" aria-labelledby="about-heading">
         <div className="frame">
           <div className="section-label micro"><span>[02] / ABOUT</span><span>ADITHYA KARTHIK UPADHYAYULA</span></div>
-          <div className="home-about__intro">
+          <div className="home-about__intro" data-reveal="headline">
             <h2 id="about-heading">Right now<span>.</span></h2>
             <p>I study biomedical engineering at Georgia Tech. Outside class, I work on coronary plaque radiomics and build real-time EMG processing for prosthetic control.</p>
           </div>
           <div className="home-about__work">
-            <article>
+            <article data-reveal="row">
               <span className="micro">01 / RESEARCH · 2025–PRESENT</span>
               <h3>Coronary plaque radiomics.</h3>
               <p>Undergraduate Researcher · Cardiovascular Fluid Mechanics Laboratory</p>
               <Link href="/research">Explore the research <span aria-hidden="true">↗</span></Link>
             </article>
-            <article>
+            <article data-reveal="row">
               <span className="micro">02 / BUILDING · 2026–PRESENT</span>
               <h3>Project LIMBO.</h3>
               <p>Software / DSP · GT Medical Robotics Club</p>
               <Link href="/case-studies/limbo">Explore the project <span aria-hidden="true">↗</span></Link>
             </article>
           </div>
-          <details className="home-about__background">
+          <details className="home-about__background" data-reveal="row">
             <summary><span>Background &amp; recognition</span><span className="micro">OPEN NOTES <span aria-hidden="true">+</span></span></summary>
             <div className="home-about__background-content">
               <div>

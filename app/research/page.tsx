@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { DetailSection } from "@/components/DetailSection";
 import { ResearchVisual } from "@/components/Visuals";
+import { InteractiveMedia } from "@/components/InteractiveMedia";
 
 export const metadata: Metadata = {
   title: "Cardiovascular Research",
@@ -56,9 +57,9 @@ export default function ResearchPage() {
         </div>
       </section>
       <section className="detail-media frame" data-nav-theme="light" aria-label="Conceptual illustration of plaque morphology">
-        <ResearchVisual />
+        <InteractiveMedia label="Conceptual plaque morphology visual"><ResearchVisual /></InteractiveMedia>
       </section>
-      <div className="frame detail-overview">
+      <div className="frame detail-overview" data-reveal="section">
         <div className="micro">THE WORK / IN BRIEF</div>
         <div>
           <p className="detail-overview__lead">
@@ -74,7 +75,7 @@ export default function ResearchPage() {
       <div className="frame detail-sections">
         {researchSections.map((section) => <DetailSection key={section.label} {...section} />)}
       </div>
-      <div className="frame detail-next">
+      <div className="frame detail-next" data-reveal="section">
         <span className="micro">CONTINUE</span>
         <Link href="/projects">Projects<span aria-hidden="true">↗</span></Link>
       </div>
