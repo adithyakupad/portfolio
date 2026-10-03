@@ -1,5 +1,2 @@
-import { redirect } from "next/navigation";
-
-export default function ProjectsPage() {
-  redirect("/#projects");
-}
+import { permanentRedirect } from "next/navigation";
+export default function LegacyProjects() { permanentRedirect("/work"); }
