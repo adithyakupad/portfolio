@@ -13,10 +13,10 @@ Open `http://localhost:3000`. Verify a production build with `npm run build` and
 
 ## Structure
 
-- `app/page.tsx`: short sunset homepage and responsive waveform interests field
+- `app/page.tsx`: sunset homepage, responsive waveform interests field, and concise About chapter
 - `app/projects/page.tsx`: project and experiment index
 - `app/research/page.tsx`: cardiovascular research page
-- `app/about/page.tsx`: background and contact
+- `app/about/page.tsx`: redirects old About links to the homepage chapter
 - `app/case-studies/[slug]/page.tsx`: data-driven project case study template
 - `app/work/page.tsx`, `app/work/[slug]/page.tsx`, `app/projects/[slug]/page.tsx`, `app/lab/page.tsx`: redirects for old links
 - `lib/projects.ts`: project content, sections, status, and optional media
@@ -28,6 +28,6 @@ Open `http://localhost:3000`. Verify a production build with `npm run build` and
 
 ## Replacing illustrative media
 
-Place approved project images under `public/`, then add `heroMedia: { src: "/filename.jpg", alt: "..." }` to that entry in `lib/projects.ts`. Project case studies will use the image. The cardiovascular visual in `components/Visuals.tsx` is explicitly conceptual and can be replaced in the research page when publishable media is available. The current portrait is in `public/portrait.jpg`.
+Place approved project images under `public/`, then add `heroMedia: { src: "/filename.jpg", alt: "..." }` to that entry in `lib/projects.ts`. Project case studies will use the image. The cardiovascular visual in `components/Visuals.tsx` is explicitly conceptual and can be replaced in the research page when publishable media is available.
 
 The opening uses an original generated dusk horizon in `public/dusk-horizon.jpg`, made from the user-supplied album cover as a color and horizon reference. The cover itself is not shipped. The line field uses a lightweight canvas renderer with reduced frame rates on mobile and honors `prefers-reduced-motion`.
