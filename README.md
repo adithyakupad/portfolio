@@ -1,6 +1,6 @@
-# Adithya Upadhyayula — design foundation
+# Adithya Upadhyayula — portfolio
 
-The active app is an architecture and visual-system scaffold. The previous visual site is preserved on the `archive/pre-foundation` branch; the original pre-redesign site remains on `archive/pre-redesign`.
+The live portfolio at `/` is ported from commit `358d046` on `archive/pre-foundation`. The foundation commit `9350002` remains in Git history, and the original pre-redesign site remains on `archive/pre-redesign`.
 
 ## Run
 
@@ -9,20 +9,17 @@ npm install
 npm run dev
 ```
 
-Open `/design-system` in development to preview palette, type, materials, illustrative media, and motion. That route returns 404 in production. The homepage is intentionally minimal until the next design stage.
+The app uses Next.js 16.3.8 App Router, React 19.2.8, strict TypeScript, Tailwind CSS v4, and Framer Motion. npm and `package-lock.json` are the package manager source of truth.
 
-## Stack and routes
+## Structure
 
-Next.js 16.3.8 App Router, React 19.2.8, strict TypeScript, Tailwind CSS v4, and Framer Motion. npm and `package-lock.json` are the package manager source of truth. Tailwind v4 is configured in `app/globals.css` and `postcss.config.mjs`; it does not need a `tailwind.config` file. Public routes: `/`, `/work`, `/work/[slug]`, `/research`, `/lab`, and `/about`. Earlier `/case-studies/[slug]` and `/projects` links redirect to `/work`.
-
-## Design foundation
-
-- `app/globals.css` is the single source of truth for color, type, layout, glass, and breakpoint tokens. Tailwind v4 reads the same palette through `@theme inline`.
-- `components/glass/FrostedPanel.tsx` is the diffuse information material. `LiquidGlass.tsx` is the clearer interactive material with a pointer-responsive highlight.
-- `components/motion/` and `lib/motion.ts` hold shared reveal, stagger, parallax, scroll-progress, and timing rules. CSS handles the small illustrative loops. Reduced motion is supported in both systems.
-- `data/projects.ts` and `data/research.ts` hold verified content. Optional fields stay empty until there is evidence to fill them.
-- `components/visuals/` contains design illustrations only. They are labeled as conceptual and must not be presented as scientific results.
-- `public/images/`, `public/projects/`, `public/research/`, and `public/textures/` are ready for approved media. Add an image under `public/` and set `heroMedia: { src, alt }` for a project; the detail route then uses it instead of the illustration.
+- `app/page.tsx` is the recovered homepage: sunset hero, interactive topographic interests field, About, cardiovascular research, and animated project corridor.
+- `app/globals.css` includes the foundation's design tokens and the archived site's visual rules. Foundation color tokens remain on `:root`; the recovered dusk palette is scoped to `body`, while `/design-system` uses the foundation palette.
+- `components/` includes recovered navigation, glass effects, motion choreography, interactive media, diagrams, and project transitions. `components/glass/` and `components/motion/` retain the foundation's reusable materials and motion utilities.
+- `data/projects.ts` and `data/research.ts` are the source of truth for verified project and research facts. `lib/projects.ts` adapts that data to the recovered project presentation without duplicating records.
+- `app/work/[slug]/page.tsx` uses the recovered case-study composition. `/work` presents the project corridor; `/research` presents the recovered research composition. `/about` and `/lab` redirect to the corresponding homepage sections, as in the archived single-page design. Earlier `/case-studies/[slug]` and `/projects` URLs redirect to the current work routes.
+- `public/dusk-horizon.jpg` is the exact asset from the archived build. The SVG project and research visuals are illustrative, not scientific data.
+- `/design-system` remains a development-only utility and returns 404 in production.
 
 ## Checks
 
@@ -32,4 +29,4 @@ npx tsc --noEmit
 npm run build
 ```
 
-No deployment target or domain is configured in this repository. `origin` points to the existing GitHub repository. `next.config.ts` allows `127.0.0.1` only as an additional local development origin.
+No deployment target or domain is configured in the repository. `next.config.ts` only adds `127.0.0.1` as a local development origin.

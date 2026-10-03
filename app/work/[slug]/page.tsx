@@ -1,43 +1,93 @@
+import { ProjectMedia } from "@/components/ProjectMedia";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ProjectArchitecture } from "@/components/projects/ProjectArchitecture";
-import { ProjectMetadata } from "@/components/projects/ProjectMetadata";
-import { ProjectVisual } from "@/components/projects/ProjectVisual";
-import { DisplayText } from "@/components/typography/DisplayText";
-import { SectionLabel } from "@/components/typography/SectionLabel";
-import { getProject, projects } from "@/data/projects";
+import { DetailSection } from "@/components/DetailSection";
+import { getProject, projects } from "@/lib/projects";
+import { InteractiveMedia } from "@/components/InteractiveMedia";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() { return projects.map(({ slug }) => ({ slug })); }
+export function generateStaticParams() {
+  return projects.map(({ slug }) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = getProject((await params).slug);
-  return project ? { title: project.title, description: project.description } : { title: "Project not found" };
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) return { title: "Project not found" };
+  return {
+    title: project.title,
+    description: project.description,
+  };
 }
 
 export default async function ProjectPage({ params }: Props) {
-  const project = getProject((await params).slug);
+  const { slug } = await params;
+  const project = getProject(slug);
   if (!project) notFound();
 
+  const currentIndex = projects.findIndex((item) => item.slug === slug);
+  const nextProject = projects[((currentIndex < 0 ? 0 : currentIndex) + 1) % projects.length];
+
   return (
-    <main className="route-page route-page--paper project-detail">
-      <div className="editorial-container route-page__intro">
-        <Link className="type-meta back-link" href="/work">← ALL WORK</Link>
-        <SectionLabel>{project.category}</SectionLabel>
-        <DisplayText scale="large">{project.title}<span className="accent-dot">.</span></DisplayText>
-        <p>{project.description}</p>
+    <main className="detail-page">
+      <section className="detail-hero" data-project={project.slug} data-nav-theme="dark">
+        <div className="detail-hero__atmosphere" data-parallax="" data-parallax-speed="130" aria-hidden="true" />
+        <div className="detail-hero__atmosphere detail-hero__atmosphere--near" data-parallax="" data-parallax-speed="-80" aria-hidden="true" />
+        <div className="frame">
+          <div className="detail-hero__top micro">
+            <Link href="/#projects">← ALL PROJECTS</Link>
+            <span>{project.number} / {project.category}</span>
+          </div>
+          <div className="detail-hero__headline">
+            <h1 tabIndex={-1} data-parallax="" data-parallax-speed="-45">{project.title}<span className="red-period">.</span></h1>
+            <p data-parallax="" data-parallax-speed="24">{project.thesis}</p>
+          </div>
+          <div className="detail-hero__bottom micro">
+            <span>{project.status}</span>
+            {project.year && <span>{project.year}</span>}
+          </div>
+        </div>
+      </section>
+
+      <section className="detail-media frame" data-nav-theme="light" data-parallax="" data-parallax-speed="60" aria-label={`Conceptual visual for ${project.title}`}>
+        <InteractiveMedia label={`${project.title} visual`}><ProjectMedia project={project} idPrefix={`detail-${project.slug}`} /></InteractiveMedia>
+        <p className="micro">ILLUSTRATIVE SYSTEM VISUAL · PROJECT MEDIA CAN BE ADDED HERE</p>
+      </section>
+
+      <div className="frame detail-overview" data-reveal="section">
+        <div className="micro">OVERVIEW / {project.number}</div>
+        <div>
+          <p className="detail-overview__lead">{project.description}</p>
+          {project.role && <p className="detail-overview__role">{project.role}</p>}
+          {project.technologies && (
+            <p className="detail-overview__tech micro">WORKING AREAS / {project.technologies.join(" · ")}</p>
+          )}
+        </div>
       </div>
-      <div className="editorial-container project-detail__visual">
-        {project.heroMedia ? <Image src={project.heroMedia.src} alt={project.heroMedia.alt} width={1600} height={900} sizes="(max-width: 760px) 100vw, 80vw" /> : <ProjectVisual visual={project.visual} title={project.title} />}
-      </div>
-      <div className="editorial-container project-detail__body">
-        <ProjectMetadata project={project} />
-        {project.architecture && <ProjectArchitecture architecture={project.architecture} />}
-        {project.contentSections?.map((section) => <section className="project-detail__section" key={section.id}><span className="type-meta">{section.id}</span><div><h2>{section.heading}</h2>{section.body && <p>{section.body}</p>}{section.points && <ul>{section.points.map((point) => <li key={point}>{point}</li>)}</ul>}{section.note && <small>{section.note}</small>}</div></section>)}
-        {!project.contentSections?.length && <p className="project-detail__pending">More project documentation will be added as it becomes available.</p>}
+
+      {project.sections.length > 0 ? (
+        <div className="frame detail-sections">
+          {project.sections.map((section) => <DetailSection key={section.label} {...section} />)}
+        </div>
+      ) : (
+        <div className="frame detail-pending" data-reveal="section">
+          <span className="micro">THE CASE STUDY</span>
+          <p>Technical details will be added when they are ready to share.</p>
+        </div>
+      )}
+
+      {project.links && project.links.length > 0 && (
+        <div className="frame detail-links">
+          <span className="micro">LINKS</span>
+          {project.links.map((link) => <a href={link.href} key={link.href}>{link.label} ↗</a>)}
+        </div>
+      )}
+
+      <div className="frame detail-next" data-reveal="section">
+        <span className="micro">NEXT PROJECT</span>
+        <Link href={`/work/${nextProject.slug}`}>{nextProject.title}<span aria-hidden="true">↗</span></Link>
       </div>
     </main>
   );
