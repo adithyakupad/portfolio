@@ -54,7 +54,7 @@ export default function AboutPage() {
             <h2>GT Medical Robotics Club</h2>
             <p>Project LIMBO · Software / DSP · 2026–present</p>
             <p>Real-time EMG processing and prosthetic control.</p>
-            <Link className="text-link" href="/work/limbo">Explore LIMBO <span aria-hidden="true">↗</span></Link>
+            <Link className="text-link" href="/case-studies/limbo">Explore LIMBO <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
         <div className="about-page__fact">

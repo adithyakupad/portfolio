@@ -36,8 +36,8 @@ export function WaveField() {
 
     const draw = (time: number) => {
       context.clearRect(0, 0, width, height);
-      const count = Math.max(55, Math.min(160, Math.round(width / 10)));
-      const stepY = width < 700 ? 13 : 11;
+      const count = Math.max(60, Math.min(190, Math.round(width / 8)));
+      const stepY = width < 700 ? 13 : 12;
       pointer.x += (pointer.targetX - pointer.x) * .13;
       pointer.y += (pointer.targetY - pointer.y) * .13;
       pointer.strength += (pointer.targetStrength - pointer.strength) * .07;
@@ -46,18 +46,19 @@ export function WaveField() {
         const baseX = (index / (count - 1)) * width;
         context.beginPath();
         for (let y = -14; y <= height + 14; y += stepY) {
-          const ambient = Math.sin(y * .012 + index * .19 + time * .00022) * 3.2
-            + Math.sin(y * .026 - index * .075 - time * .0003) * 1.7;
+          const ambient = Math.sin(y * .013 + index * .075 + time * .00072) * 12
+            + Math.sin(y * .031 - index * .052 - time * .0011) * 5.5
+            + Math.sin(y * .007 + baseX * .006 + time * .00048) * 6;
           const dx = baseX - pointer.x;
           const dy = y - pointer.y;
           const distance = Math.hypot(dx, dy);
-          const influence = Math.exp(-(distance * distance) / 39000) * pointer.strength;
-          const ripple = Math.sin(distance * .046 - time * .0043) * 33 * influence;
+          const influence = Math.exp(-(distance * distance) / 52000) * pointer.strength;
+          const ripple = Math.sin(distance * .046 - time * .0043) * 56 * influence;
           const x = baseX + ambient + ripple;
           if (y === -14) context.moveTo(x, y);
           else context.lineTo(x, y);
         }
-        context.strokeStyle = index % 13 === 0 ? "rgba(245,247,244,.75)" : "rgba(218,230,232,.53)";
+        context.strokeStyle = index % 13 === 0 ? "rgba(245,247,244,.84)" : "rgba(218,230,232,.62)";
         context.stroke();
       }
     };
@@ -67,7 +68,7 @@ export function WaveField() {
         draw(time);
         previous = time;
       }
-      if (visible) frame = requestAnimationFrame(animate);
+      if (visible && document.visibilityState === "visible") frame = requestAnimationFrame(animate);
     };
     const move = (event: PointerEvent) => {
       const rect = host.getBoundingClientRect();
@@ -78,15 +79,16 @@ export function WaveField() {
     const leave = () => { pointer.targetStrength = 0; };
     const observer = new ResizeObserver(resize);
     observer.observe(host);
+    const resume = () => {
+      cancelAnimationFrame(frame);
+      if (visible && !reducedMotion && document.visibilityState === "visible") frame = requestAnimationFrame(animate);
+    };
     const visibility = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
-      if (visible && !reducedMotion) {
-        cancelAnimationFrame(frame);
-        frame = requestAnimationFrame(animate);
-      }
-      else cancelAnimationFrame(frame);
+      resume();
     });
     visibility.observe(host);
+    document.addEventListener("visibilitychange", resume);
     if (!reducedMotion) {
       host.addEventListener("pointermove", move);
       host.addEventListener("pointerleave", leave);
@@ -94,6 +96,7 @@ export function WaveField() {
     return () => {
       observer.disconnect();
       visibility.disconnect();
+      document.removeEventListener("visibilitychange", resume);
       cancelAnimationFrame(frame);
       host.removeEventListener("pointermove", move);
       host.removeEventListener("pointerleave", leave);

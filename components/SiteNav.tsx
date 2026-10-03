@@ -5,15 +5,15 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const links = [
-  { label: "Work", href: "/work" },
   { label: "Research", href: "/research" },
-  { label: "Lab", href: "/lab" },
+  { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
 ] as const;
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -28,6 +28,7 @@ export function SiteNav() {
           if (box.top <= 76) current = section.dataset.navTheme === "light" ? "light" : "dark";
         }
         setTheme(current);
+        setScrolled(window.scrollY > 28);
       });
     };
     update();
@@ -43,8 +44,8 @@ export function SiteNav() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [open]);
 
-  return <header className="site-header" data-theme={theme}>
-    <nav className="site-nav liquid-surface" aria-label="Primary navigation" onPointerMove={(event) => { const rect = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - rect.left}px`); }}>
+  return <header className="site-header" data-theme={theme} data-scrolled={scrolled}>
+    <nav className="site-nav liquid-surface" aria-label="Primary navigation" onPointerMove={(event) => { const rect = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - rect.left}px`); event.currentTarget.style.setProperty("--pointer-y", `${event.clientY - rect.top}px`); }}>
       <Link className="site-nav__mark" href="/" onClick={() => setOpen(false)} aria-label="Adithya Upadhyayula, home">AU<span className="site-nav__mark-dot">.</span></Link>
       <div className="site-nav__links">{links.map((link) => <Link key={link.label} href={link.href} aria-current={pathname === link.href ? "page" : undefined}>{link.label}</Link>)}</div>
       <a className="site-nav__contact" href="mailto:aupadhyayula6@gatech.edu">CONTACT ↗</a>
@@ -52,7 +53,7 @@ export function SiteNav() {
     </nav>
     <div className={`mobile-navigation liquid-surface ${open ? "mobile-navigation--open" : ""}`} id="mobile-navigation" inert={!open}>
       {links.map((link, index) => <Link key={link.label} href={link.href} onClick={() => setOpen(false)}><span className="micro">{String(index + 1).padStart(2, "0")}</span>{link.label}<span aria-hidden="true">↗</span></Link>)}
-      <a href="mailto:aupadhyayula6@gatech.edu" onClick={() => setOpen(false)}><span className="micro">05</span>Contact<span aria-hidden="true">↗</span></a>
+      <a href="mailto:aupadhyayula6@gatech.edu" onClick={() => setOpen(false)}><span className="micro">{String(links.length + 1).padStart(2, "0")}</span>Contact<span aria-hidden="true">↗</span></a>
     </div>
   </header>;
 }

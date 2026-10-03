@@ -38,7 +38,7 @@ const researchSections = [
 export default function ResearchPage() {
   return (
     <main className="detail-page research-page">
-      <section className="detail-hero research-page__hero" data-nav-theme="dark">
+      <section className="detail-hero research-page__hero" data-nav-theme="light">
         <div className="frame">
           <div className="detail-hero__top micro">
             <Link href="/">← HOME / RESEARCH</Link>
@@ -76,7 +76,7 @@ export default function ResearchPage() {
       </div>
       <div className="frame detail-next">
         <span className="micro">CONTINUE</span>
-        <Link href="/work">Selected work<span aria-hidden="true">↗</span></Link>
+        <Link href="/projects">Projects<span aria-hidden="true">↗</span></Link>
       </div>
     </main>
   );
