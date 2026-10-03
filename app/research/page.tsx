@@ -38,10 +38,10 @@ const researchSections = [
 export default function ResearchPage() {
   return (
     <main className="detail-page research-page">
-      <section className="detail-hero research-page__hero">
+      <section className="detail-hero research-page__hero" data-nav-theme="dark">
         <div className="frame">
           <div className="detail-hero__top micro">
-            <Link href="/#research">← HOME / RESEARCH</Link>
+            <Link href="/research">← HOME / RESEARCH</Link>
             <span>GEORGIA INSTITUTE OF TECHNOLOGY</span>
           </div>
           <div className="detail-hero__headline">
@@ -55,7 +55,7 @@ export default function ResearchPage() {
           </div>
         </div>
       </section>
-      <section className="detail-media frame" aria-label="Conceptual illustration of plaque morphology">
+      <section className="detail-media frame" data-nav-theme="light" aria-label="Conceptual illustration of plaque morphology">
         <ResearchVisual />
       </section>
       <div className="frame detail-overview">
@@ -76,7 +76,7 @@ export default function ResearchPage() {
       </div>
       <div className="frame detail-next">
         <span className="micro">CONTINUE</span>
-        <Link href="/#work">Selected work<span aria-hidden="true">↗</span></Link>
+        <Link href="/work">Selected work<span aria-hidden="true">↗</span></Link>
       </div>
     </main>
   );

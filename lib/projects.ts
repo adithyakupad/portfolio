@@ -18,6 +18,7 @@ export type Project = {
   role?: string;
   technologies?: string[];
   visual: "limbo" | "instinct" | "jarvis";
+  heroMedia?: { src: string; alt: string };
   sections: ProjectSection[];
   links?: { label: string; href: string }[];
 };
@@ -119,8 +120,8 @@ export const projects: Project[] = [
     title: "JARVIS",
     category: "Project / Documentation forthcoming",
     status: "Case study forthcoming",
-    description: "A project entry reserved for a future technical case study.",
-    thesis: "The story is still being written.",
+    description: "Documentation forthcoming.",
+    thesis: "Technical case study forthcoming.",
     visual: "jarvis",
     sections: [],
   },

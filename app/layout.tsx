@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Serif } from "next/font/google";
+import { Instrument_Serif, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { SiteNav } from "@/components/SiteNav";
 import "./globals.css";
@@ -12,13 +12,15 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
+
 export const metadata: Metadata = {
   title: {
     default: "Adithya Upadhyayula — Biology × Machines",
     template: "%s — Adithya Upadhyayula",
   },
   description:
-    "Adithya Upadhyayula is a biomedical engineer at Georgia Tech working across medical robotics and biological computing.",
+    "Medical robotics, biological computing, and the systems between. Adithya Upadhyayula at Georgia Tech.",
   openGraph: {
     title: "Adithya Upadhyayula — Biology × Machines",
     description:
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={instrumentSerif.variable}>
+    <html lang="en" className={`${instrumentSerif.variable} ${geistMono.variable}`}>
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
         <SiteNav />

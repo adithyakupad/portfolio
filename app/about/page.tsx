@@ -6,13 +6,13 @@ import { honors, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Adithya Karthik Upadhyayula studies biomedical engineering at Georgia Tech and works across medical robotics and biological computing.",
+    "Biomedical Engineering at Georgia Tech. Medical robotics, biological computing, and cardiovascular research.",
 };
 
 export default function AboutPage() {
   return (
     <main className="about-page">
-      <section className="about-page__hero">
+      <section className="about-page__hero" data-nav-theme="dark">
         <div className="frame">
           <div className="detail-hero__top micro"><Link href="/">← HOME</Link><span>ATLANTA, GEORGIA</span></div>
           <div className="about-page__hero-grid">
@@ -31,7 +31,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="about-page__facts frame">
+      <section className="about-page__facts frame" data-nav-theme="light">
         <div className="section-label micro"><span>BACKGROUND</span><span>THE WORK SO FAR</span></div>
         <div className="about-page__fact">
           <span className="micro">01 / EDUCATION</span>
@@ -56,7 +56,7 @@ export default function AboutPage() {
             <h2>GT Medical Robotics Club</h2>
             <p>Project LIMBO · Software / DSP · 2026–present</p>
             <p>Real-time EMG processing and prosthetic control.</p>
-            <Link className="text-link" href="/projects/limbo">Explore LIMBO <span aria-hidden="true">↗</span></Link>
+            <Link className="text-link" href="/work/limbo">Explore LIMBO <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
         <div className="about-page__fact">
@@ -67,7 +67,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="about-page__honors">
+      <section className="about-page__honors" data-nav-theme="light">
         <div className="frame">
           <div className="section-label micro"><span>SELECTED RECOGNITION</span><span>DETAILS, NOT THE WHOLE STORY</span></div>
           <details>
