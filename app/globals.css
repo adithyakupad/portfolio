@@ -1223,20 +1223,51 @@ html[data-motion-visibility="hidden"] .visual *, html[data-motion-visibility="hi
   .intro-hero__floor a:hover { translate: none; }
 }
 
-/* Au is drawn as one linked A/u structure, with 79 set like a material index. */
-.site-nav__mark { display: inline-flex; align-items: center; min-width: 4.5rem; min-height: 2.5rem; }
-.brand-mark { position: relative; display: inline-block; width: 4.55rem; height: 2.35rem; color: inherit; vertical-align: middle; }
-.brand-mark__glyph { position: absolute; left: 0; bottom: 0; width: 3.65rem; height: 2.35rem; overflow: visible; }
-.brand-mark__crossbar { color: #D8AE75; }
-.brand-mark__atom { fill: #D8AE75; transform-origin: 57.5px 7.5px; transition: transform .35s cubic-bezier(.16,1,.3,1); }
-.brand-mark__index { position: absolute; top: .18rem; right: 0; border-top: 1px solid #D8AE75; padding-top: .16rem; color: #D8AE75; font-family: var(--mono); font-size: .52rem; font-weight: 600; letter-spacing: -.02em; line-height: 1; }
-.site-nav__mark:hover .brand-mark__atom, .site-footer__bottom a:hover .brand-mark__atom { transform: translate(2px,-3px); }
-.site-nav__mark:hover .brand-mark__index, .site-footer__bottom a:hover .brand-mark__index { color: #F1C995; }
+/* A compact Au signal sits beside a typographic name, in the spirit of a lab identity. */
+.site-nav__mark { display: inline-flex; align-items: center; min-width: 9.3rem; min-height: 2.5rem; }
+.brand-mark { display: inline-flex; align-items: center; gap: .58rem; color: inherit; white-space: nowrap; vertical-align: middle; }
+.brand-mark__symbol { position: relative; display: grid; align-items: center; width: 2.55rem; height: 2.45rem; }
+.brand-mark__initials { display: block; font-family: var(--sans); font-size: 1.83rem; font-weight: 700; line-height: 1; letter-spacing: -.17em; }
+.brand-mark__signal { position: absolute; top: .17rem; right: -.15rem; display: flex; align-items: center; gap: .22rem; transform: rotate(31deg); transform-origin: left center; }
+.brand-mark__signal i { display: block; width: .24rem; height: .24rem; border-radius: 50%; background: #D8AE75; transition: transform .4s cubic-bezier(.16,1,.3,1); }
+.brand-mark__signal i:nth-child(2) { width: .18rem; height: .18rem; }
+.brand-mark__signal i:nth-child(3) { width: .12rem; height: .12rem; }
+.brand-mark__name { display: flex; flex-direction: column; justify-content: center; gap: .08rem; padding-top: .08rem; line-height: 1; }
+.brand-mark__name strong { font-size: 1.1rem; font-weight: 700; letter-spacing: -.045em; }
+.brand-mark__name > span { font-size: .58rem; font-weight: 700; letter-spacing: .065em; }
+.site-nav__mark:hover .brand-mark__signal i:nth-child(1), .site-footer__bottom a:hover .brand-mark__signal i:nth-child(1) { transform: translate(.12rem,-.12rem); }
+.site-nav__mark:hover .brand-mark__signal i:nth-child(2), .site-footer__bottom a:hover .brand-mark__signal i:nth-child(2) { transform: translate(.18rem,-.18rem); }
+.site-nav__mark:hover .brand-mark__signal i:nth-child(3), .site-footer__bottom a:hover .brand-mark__signal i:nth-child(3) { transform: translate(.25rem,-.25rem); }
 .site-footer__bottom a { display: inline-flex; align-items: center; }
-.site-footer__bottom .brand-mark { width: 6rem; height: 3rem; }
-.site-footer__bottom .brand-mark__glyph { width: 4.6rem; height: 3rem; }
-.site-footer__bottom .brand-mark__index { top: .28rem; font-size: .62rem; }
+.site-footer__bottom .brand-mark { gap: .85rem; }
+.site-footer__bottom .brand-mark__symbol { width: 3.2rem; height: 3rem; }
+.site-footer__bottom .brand-mark__initials { font-size: 2.3rem; }
+.site-footer__bottom .brand-mark__name strong { font-size: 1.37rem; }
+.site-footer__bottom .brand-mark__name > span { font-size: .73rem; }
+.site-footer__bottom .brand-mark__signal { top: .13rem; right: -.1rem; }
+
+/* Independent optical layers shift color while scroll moves them at separate depths. */
+.intro-hero__light { position: absolute; z-index: -1; inset: -17%; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(ellipse 47% 46% at 74% 71%,rgba(241,163,93,.35),transparent 72%),radial-gradient(ellipse 32% 39% at 38% 37%,rgba(93,141,159,.2),transparent 74%); animation: atmosphere-chroma 22s ease-in-out infinite alternate; }
+.home-focus__depth--near { background: radial-gradient(ellipse at 15% 27%,rgba(91,169,184,.52),transparent 42%),radial-gradient(ellipse at 87% 74%,rgba(185,139,181,.46),transparent 42%),radial-gradient(ellipse at 57% 105%,rgba(234,163,99,.42),transparent 44%); animation: atmosphere-chroma 19s ease-in-out infinite alternate; }
+.home-about__atmosphere--near { background: radial-gradient(ellipse at 78% 25%,rgba(154,177,201,.67),transparent 38%),radial-gradient(ellipse at 20% 88%,rgba(230,169,111,.56),transparent 40%); animation: atmosphere-chroma 24s ease-in-out infinite alternate-reverse; }
+.projects-page__atmosphere--near { background: radial-gradient(ellipse at 73% 55%,rgba(151,192,205,.46),transparent 43%),radial-gradient(ellipse at 21% 34%,rgba(224,164,127,.39),transparent 42%); animation: atmosphere-chroma 20s ease-in-out infinite alternate; }
+.detail-hero__atmosphere--near { background: radial-gradient(ellipse at 66% 42%,rgba(114,154,177,.35),transparent 39%),radial-gradient(ellipse at 25% 85%,rgba(201,143,109,.29),transparent 40%); animation: atmosphere-chroma 21s ease-in-out infinite alternate; }
+.research-page__hero .detail-hero__atmosphere--near { background: radial-gradient(ellipse at 74% 28%,rgba(135,190,202,.41),transparent 39%),radial-gradient(ellipse at 21% 84%,rgba(231,181,142,.43),transparent 42%); }
+@keyframes atmosphere-chroma {
+  0% { opacity: .26; transform: translate3d(-2%,2%,0) scale(1); }
+  48% { opacity: .8; transform: translate3d(3%,-2%,0) scale(1.07); }
+  100% { opacity: .4; transform: translate3d(-3%,1%,0) scale(1.02); }
+}
+.intro-hero__light, .home-focus__depth--near, .home-about__atmosphere--near, .projects-page__atmosphere--near, .detail-hero__atmosphere--near { will-change: transform,opacity,translate; }
+@media (max-width: 700px) {
+  .site-nav__mark { min-width: 8.6rem; }
+  .brand-mark__name strong { font-size: 1rem; }
+  .brand-mark__name > span { font-size: .54rem; }
+  .brand-mark__symbol { width: 2.35rem; }
+  .brand-mark__initials { font-size: 1.72rem; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .brand-mark__atom { transition: none; }
-  .site-nav__mark:hover .brand-mark__atom, .site-footer__bottom a:hover .brand-mark__atom { transform: none; }
+  .brand-mark__signal i { transition: none; }
+  .site-nav__mark:hover .brand-mark__signal i, .site-footer__bottom a:hover .brand-mark__signal i { transform: none; }
+  .intro-hero__light, .home-focus__depth--near, .home-about__atmosphere--near, .projects-page__atmosphere--near, .detail-hero__atmosphere--near { animation: none; opacity: .35; will-change: auto; }
 }

@@ -33,6 +33,7 @@ export default async function ProjectPage({ params }: Props) {
     <main className="detail-page">
       <section className="detail-hero" data-nav-theme="dark">
         <div className="detail-hero__atmosphere" data-parallax="" data-parallax-speed="130" aria-hidden="true" />
+        <div className="detail-hero__atmosphere detail-hero__atmosphere--near" data-parallax="" data-parallax-speed="-80" aria-hidden="true" />
         <div className="frame">
           <div className="detail-hero__top micro">
             <Link href="/projects">← ALL PROJECTS</Link>
@@ -40,7 +41,7 @@ export default async function ProjectPage({ params }: Props) {
           </div>
           <div className="detail-hero__headline">
             <h1 data-parallax="" data-parallax-speed="-45">{project.title}<span className="red-period">.</span></h1>
-            <p>{project.thesis}</p>
+            <p data-parallax="" data-parallax-speed="24">{project.thesis}</p>
           </div>
           <div className="detail-hero__bottom micro">
             <span>{project.status}</span>

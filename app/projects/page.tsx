@@ -16,9 +16,10 @@ export default function ProjectsPage() {
     <main className="index-page projects-page lab-page">
       <section className="index-hero lab-page__hero" data-nav-theme="light">
         <div className="projects-page__atmosphere" data-parallax="" data-parallax-speed="115" aria-hidden="true" />
+        <div className="projects-page__atmosphere projects-page__atmosphere--near" data-parallax="" data-parallax-speed="-75" aria-hidden="true" />
         <div className="frame">
           <div className="section-label micro"><span>INDEX / 02</span><span>BUILDS / TESTS / OPEN QUESTIONS</span></div>
-          <div className="index-hero__body"><span className="micro">EXPERIMENTS / OPEN BUILDS</span><h1 data-parallax="" data-parallax-speed="-52">PROJECTS<span className="red-period">.</span></h1><p>Build / test / break / repeat.</p></div>
+          <div className="index-hero__body"><span className="micro">EXPERIMENTS / OPEN BUILDS</span><h1 data-parallax="" data-parallax-speed="-52">PROJECTS<span className="red-period">.</span></h1><p data-parallax="" data-parallax-speed="28">Build / test / break / repeat.</p></div>
         </div>
       </section>
       <section className="lab-page__entries" data-nav-theme="light">

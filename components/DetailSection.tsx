@@ -11,7 +11,7 @@ export function DetailSection({ label, heading, body, points, note }: DetailSect
     <section className="detail-section" data-reveal="section">
       <div className="detail-section__label micro" data-parallax="" data-parallax-speed="-18">{label}</div>
       <div className="detail-section__content">
-        <h2>{heading}</h2>
+        <h2 data-parallax="" data-parallax-speed="18" data-parallax-axis="x">{heading}</h2>
         {body && <p>{body}</p>}
         {points && (
           <ol className="process-list">

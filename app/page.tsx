@@ -8,6 +8,7 @@ export default function Home() {
     <main className="home">
       <section className="intro-hero" id="top" data-nav-theme="dark" aria-labelledby="hero-heading">
         <Image className="intro-hero__sunset" src="/dusk-horizon.jpg" alt="" fill priority sizes="100vw" data-parallax="" data-parallax-speed="155" />
+        <div className="intro-hero__light" data-parallax="" data-parallax-speed="-95" aria-hidden="true" />
         <div className="frame intro-hero__copy">
           <div className="section-label micro"><span>ADITHYA UPADHYAYULA</span><span>BIOMEDICAL ENGINEERING / GEORGIA TECH</span></div>
           <div className="intro-hero__message" data-parallax="" data-parallax-speed="-48">
@@ -21,12 +22,13 @@ export default function Home() {
 
       <section className="home-focus" id="focus" data-nav-theme="dark" aria-labelledby="focus-heading">
         <div className="home-focus__depth" data-parallax="" data-parallax-speed="110" aria-hidden="true" />
+        <div className="home-focus__depth home-focus__depth--near" data-parallax="" data-parallax-speed="-85" aria-hidden="true" />
         <WaveField />
         <div className="frame home-focus__inner">
           <div className="section-label micro"><span>[01] / INTERESTS</span><span>BIOMEDICAL ENGINEERING / ATLANTA</span></div>
           <div className="home-focus__content" data-reveal="headline" data-parallax="" data-parallax-speed="-54">
             <p className="micro">I&apos;M INTERESTED IN</p>
-            <h2 id="focus-heading"><span>Medical robotics.</span><span>Biological computing.</span></h2>
+            <h2 id="focus-heading"><span data-parallax="" data-parallax-speed="-22" data-parallax-axis="x">Medical robotics.</span><span data-parallax="" data-parallax-speed="25" data-parallax-axis="x">Biological computing.</span></h2>
           </div>
           <div className="home-focus__field-caption micro"><span>SIGNALS / SYSTEMS</span><span>MOVE TO DISTURB THE FIELD</span></div>
         </div>
@@ -34,6 +36,7 @@ export default function Home() {
 
       <section className="home-about" id="about" data-nav-theme="light" aria-labelledby="about-heading">
         <div className="home-about__atmosphere" data-parallax="" data-parallax-speed="115" aria-hidden="true" />
+        <div className="home-about__atmosphere home-about__atmosphere--near" data-parallax="" data-parallax-speed="-80" aria-hidden="true" />
         <div className="frame">
           <div className="section-label micro"><span>[02] / ABOUT</span><span>ADITHYA KARTHIK UPADHYAYULA</span></div>
           <div className="home-about__intro" data-reveal="headline">
