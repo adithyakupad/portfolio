@@ -40,6 +40,7 @@ export default function ResearchPage() {
   return (
     <main className="detail-page research-page">
       <section className="detail-hero research-page__hero" data-nav-theme="light">
+        <div className="detail-hero__atmosphere" data-parallax="" data-parallax-speed="130" aria-hidden="true" />
         <div className="frame">
           <div className="detail-hero__top micro">
             <Link href="/">← HOME / RESEARCH</Link>
@@ -47,7 +48,7 @@ export default function ResearchPage() {
           </div>
           <div className="detail-hero__headline">
             <span className="micro">CARDIOVASCULAR FLUID MECHANICS LABORATORY</span>
-            <h1>Coronary plaque<br /><em>radiomics.</em></h1>
+            <h1 data-parallax="" data-parallax-speed="-45">Coronary plaque<br /><em>radiomics.</em></h1>
             <p>Radiomic phenotyping of coronary atherosclerotic plaques.</p>
           </div>
           <div className="detail-hero__bottom micro">
@@ -56,7 +57,7 @@ export default function ResearchPage() {
           </div>
         </div>
       </section>
-      <section className="detail-media frame" data-nav-theme="light" aria-label="Conceptual illustration of plaque morphology">
+      <section className="detail-media frame" data-nav-theme="light" data-parallax="" data-parallax-speed="60" aria-label="Conceptual illustration of plaque morphology">
         <InteractiveMedia label="Conceptual plaque morphology visual"><ResearchVisual /></InteractiveMedia>
       </section>
       <div className="frame detail-overview" data-reveal="section">

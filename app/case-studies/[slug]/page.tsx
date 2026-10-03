@@ -32,13 +32,14 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <main className="detail-page">
       <section className="detail-hero" data-nav-theme="dark">
+        <div className="detail-hero__atmosphere" data-parallax="" data-parallax-speed="130" aria-hidden="true" />
         <div className="frame">
           <div className="detail-hero__top micro">
             <Link href="/projects">← ALL PROJECTS</Link>
             <span>{project.number} / {project.category}</span>
           </div>
           <div className="detail-hero__headline">
-            <h1>{project.title}<span className="red-period">.</span></h1>
+            <h1 data-parallax="" data-parallax-speed="-45">{project.title}<span className="red-period">.</span></h1>
             <p>{project.thesis}</p>
           </div>
           <div className="detail-hero__bottom micro">
@@ -48,7 +49,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="detail-media frame" data-nav-theme="light" aria-label={`Conceptual visual for ${project.title}`}>
+      <section className="detail-media frame" data-nav-theme="light" data-parallax="" data-parallax-speed="60" aria-label={`Conceptual visual for ${project.title}`}>
         <InteractiveMedia label={`${project.title} visual`}><ProjectMedia project={project} idPrefix={`detail-${project.slug}`} /></InteractiveMedia>
         <p className="micro">ILLUSTRATIVE SYSTEM VISUAL · PROJECT MEDIA CAN BE ADDED HERE</p>
       </section>

@@ -9,7 +9,7 @@ type DetailSectionProps = {
 export function DetailSection({ label, heading, body, points, note }: DetailSectionProps) {
   return (
     <section className="detail-section" data-reveal="section">
-      <div className="detail-section__label micro">{label}</div>
+      <div className="detail-section__label micro" data-parallax="" data-parallax-speed="-18">{label}</div>
       <div className="detail-section__content">
         <h2>{heading}</h2>
         {body && <p>{body}</p>}

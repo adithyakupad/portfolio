@@ -15,9 +15,10 @@ export default function ProjectsPage() {
   return (
     <main className="index-page projects-page lab-page">
       <section className="index-hero lab-page__hero" data-nav-theme="light">
+        <div className="projects-page__atmosphere" data-parallax="" data-parallax-speed="115" aria-hidden="true" />
         <div className="frame">
           <div className="section-label micro"><span>INDEX / 02</span><span>BUILDS / TESTS / OPEN QUESTIONS</span></div>
-          <div className="index-hero__body"><span className="micro">EXPERIMENTS / OPEN BUILDS</span><h1>PROJECTS<span className="red-period">.</span></h1><p>Build / test / break / repeat.</p></div>
+          <div className="index-hero__body"><span className="micro">EXPERIMENTS / OPEN BUILDS</span><h1 data-parallax="" data-parallax-speed="-52">PROJECTS<span className="red-period">.</span></h1><p>Build / test / break / repeat.</p></div>
         </div>
       </section>
       <section className="lab-page__entries" data-nav-theme="light">
@@ -26,7 +27,7 @@ export default function ProjectsPage() {
           {entries.map((entry) => (
             <details className="lab-entry" data-reveal="row" key={entry.number}>
               <summary className="lab-entry__summary">
-                <span className="lab-entry__index micro">[{entry.number}] / {entry.type}</span>
+                <span className="lab-entry__index micro" data-parallax="" data-parallax-speed="20" data-parallax-axis="x">[{entry.number}] / {entry.type}</span>
                 <span className="lab-entry__title"><span className="lab-entry__state micro">{entry.state}</span><h2>{entry.title}</h2></span>
                 <span className="lab-entry__open micro" aria-hidden="true">EXPLORE <span>+</span></span>
               </summary>
